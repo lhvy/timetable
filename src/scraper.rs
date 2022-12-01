@@ -148,6 +148,8 @@ fn scrape_lesson(node: Node<'_>) -> Lesson {
     let room = spans.next().unwrap();
     let lesson_code = node.find(Name("small")).next().unwrap().text();
     let (subject_code, class_code) = lesson_code.split_once(' ').unwrap();
+    // Handle sports i.e. "SPTTennis 1"
+    let subject_code = subject_code.strip_prefix("SPT").unwrap_or(subject_code);
 
     Lesson::Present {
         subject: scrape_subject(subject),
@@ -166,6 +168,11 @@ fn scrape_subject(node: Node<'_>) -> Subject {
         return Subject {
             name: "Assembly".to_string(),
             faculty: "Pastoral Care".to_string(),
+        };
+    } else if text == "Sport Sport" {
+        return Subject {
+            name: "Sport".to_string(),
+            faculty: "Phys.Ed".to_string(),
         };
     }
 
