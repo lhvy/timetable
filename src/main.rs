@@ -31,7 +31,7 @@ fn main() -> anyhow::Result<()> {
         .user_agent(USER_AGENT)
         .build()?;
 
-    let mut students = scraper::scrape_student_identities(&client, &host, &timetable_uuid)?;
+    let students = scraper::scrape_student_identities(&client, &host, &timetable_uuid)?;
 
     let bar = ProgressBar::new(students.len() as u64);
     bar.set_style(
