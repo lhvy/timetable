@@ -11,6 +11,8 @@ pub(crate) fn gen_timetable_xml(t: &Timetable) -> String {
     xml += "<key>Settings</key><dict><key>ColorSettings</key><dict>";
     let mut subjects = BTreeSet::new();
 
+    let mut assembly_subject_class_codes = None;
+
     // Generate list of subjects for colors
     for day in t.week_a.days.values() {
         for lesson in &day.lessons {
@@ -22,6 +24,7 @@ pub(crate) fn gen_timetable_xml(t: &Timetable) -> String {
             } = lesson
             {
                 if subject.name == "Assembly" {
+                    assembly_subject_class_codes = Some((subject_code, class_code));
                     continue;
                 }
 
@@ -62,10 +65,11 @@ pub(crate) fn gen_timetable_xml(t: &Timetable) -> String {
         srgb.r, srgb.g, srgb.b
     );
 
-    xml += &format!(
-        "<key>Lunch</key>{}<key>Recess</key>{}<key>Free Period</key>{}<key>Assembly</key>{}",
-        color, color, color, color
-    );
+    xml += &format!("<key>Lunch</key>{color}<key>Recess</key>{color}<key>Free Period</key>{color}");
+
+    if let Some((assembly_sc, assembly_cc)) = assembly_subject_class_codes {
+        xml += &format!("<key>Assembly {}.{}</key>{color}", assembly_sc, assembly_cc);
+    }
 
     // Add settings
     xml += r#"</dict>
