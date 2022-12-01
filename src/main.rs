@@ -36,7 +36,7 @@ fn main() -> anyhow::Result<()> {
     let bar = ProgressBar::new(students.len() as u64);
     bar.set_style(
         ProgressStyle::default_bar()
-            .template("{spinner:.green} [{bar:20.red}] [{pos:>3.blue}/{len:>3.blue}] Voting Ends In: {eta:.bold} {msg:.white.bold}")?
+            .template("{spinner:.green} [{wide_bar:.red}] [{pos:>3.blue}/{len:>3.blue}] Voting Ends In: {eta:.bold} {msg:.white.bold}")?
             .progress_chars(" ඞ "),
     );
 
@@ -60,7 +60,7 @@ fn main() -> anyhow::Result<()> {
 
         bar.inc(1);
     }
-    bar.finish();
+    bar.finish_with_message("Red was the impostor...");
 
     Ok(())
 }
