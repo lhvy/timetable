@@ -5,9 +5,24 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const rateLimit = require("express-rate-limit");
+const bunyan = require("bunyan");
 
 // Load env
 dotenv.config();
+
+const log = bunyan.createLogger({
+  name: "timetable",
+  streams: [
+    {
+      level: "info",
+      stream: process.stdout,
+    },
+    {
+      level: "info",
+      path: "log.json",
+    },
+  ],
+});
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -59,8 +74,11 @@ app.post("/", (req, res) => {
 
   res.download(filepath, filename, (err) => {
     if (err) {
+      log.error({ id, first, last }, "Error downloading timetable");
       req.flash("error", "Could not find timetable");
       res.status(404).redirect("/");
+    } else {
+      log.info({ id, first, last }, "Downloaded timetable");
     }
   });
 });
