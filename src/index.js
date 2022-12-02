@@ -65,6 +65,10 @@ app.post("/", (req, res) => {
   });
 });
 
+app.get("/tutorial", (req, res) => {
+  res.render("tutorial");
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

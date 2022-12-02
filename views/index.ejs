@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> </head>
+  <head>
+    <style>
+      footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        /* background-color: red; */
+        /* color: white; */
+        text-align: center;
+      }
+      </style>
+  </head>
   <body class="container">
     <header> </header>
 
     <main>
       <div>
         <h1>Timetable Downloader</h1>
+        <p><a href="/tutorial"">Instructions/Help</a></p><br />
         <form method="POST">
           <label for="first">First name:</label>
           <input type="text" id="first" name="first" /><br />
@@ -30,6 +43,8 @@
       </div>
     </main>
 
-    <footer> </footer>
+    <footer>
+      <a href="https://github.com/lhvy">GitHub Profile</a> | <a href="https://github.com/lhvy/timetable">Source Code </a>
+    </footer>
   </body>
 </html>
