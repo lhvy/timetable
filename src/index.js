@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const flash = require("connect-flash");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const rateLimit = require("express-rate-limit");
 
 // Load env
 dotenv.config();
@@ -32,6 +33,15 @@ app.use(function (req, res, next) {
   res.locals.messages = req.flash();
   next();
 });
+
+const limiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 30 minutes
+  max: 50, // Limit each IP to 50 requests per window
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+app.use(limiter);
 
 app.set("view engine", "ejs");
 
