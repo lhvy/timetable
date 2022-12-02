@@ -1,0 +1,36 @@
+{
+  "name": "timetable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhvy/timetable.git"
+  },
+  "author": "lhvy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lhvy/timetable/issues"
+  },
+  "homepage": "https://github.com/lhvy/timetable#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
