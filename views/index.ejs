@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
 
-  <body class="container">
-    <header> </header>
-
+  <body>
     <h1>Timetable Downloader</h1>
     <p><a href="/tutorial">Instructions/Help</a></p>
-    <br />
+    <% if (messages.error) { %>
+    <p class="note error"> <%= messages.error %> </p>
+    <% } %>
     <form method="POST">
       <div class="related-group">
         <div class="label-group -single-input">
@@ -44,9 +44,6 @@
       The ID can be found after the last slash in the URL of your timetable. It
       can also be found underneath the barcode on your student ID card.
     </p>
-    <% if (messages.error) { %>
-    <p class="note error"> <%= messages.error %> </p>
-    <% } %>
 
     <footer>
       <a href="https://github.com/lhvy">GitHub Profile</a> |
