@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap");
+
+@font-face {
+  font-family: "droid-sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://use.typekit.net/af/6f42c0/000000000000000077359839/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "droid-sans";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://use.typekit.net/af/4ef845/000000000000000077359840/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+    format("woff2");
+}

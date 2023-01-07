@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        /* background-color: red; */
-        /* color: white; */
-        text-align: center;
-      }
-      </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
+
   <body class="container">
     <header> </header>
 
-    <main>
-      <div>
-        <h1>Timetable Downloader</h1>
-        <p><a href="/tutorial"">Instructions/Help</a></p><br />
-        <form method="POST">
+    <h1>Timetable Downloader</h1>
+    <p><a href="/tutorial">Instructions/Help</a></p>
+    <br />
+    <form method="POST">
+      <div class="related-group">
+        <div class="label-group -single-input">
           <label for="first">First name:</label>
-          <input type="text" id="first" name="first" /><br />
+          <input type="text" id="first" name="first" placeholder="Jane" />
+        </div>
+        <div class="label-group -single-input">
           <label for="last">Last name:</label>
-          <input type="text" id="last" name="last" /><br />
+          <input type="text" id="last" name="last" placeholder="Citizen" />
+        </div>
+        <div class="label-group -single-input">
           <label for="student">ID:</label>
           <input type="text" id="student" name="student" />
-          <input type="submit" value="Submit" />
-        </form>
-        <p>
-          Please enter your name as it appears on the timetable website. CASE
-          SENSITIVE!
-        </p>
-        <p>
-          The ID can be found after the last slash in the URL of your timetable.
-          It can also be found underneath the barcode on your student ID card.
-        </p>
-        <% if (messages.error) { %>
-        <h1 style="color: red"> <%= messages.error %> </h1>
-        <% } %>
+        </div>
       </div>
-    </main>
+      <div class="label-group">
+        <label>Options:</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="dummy" />
+          <label for="dummy">Invert flux capacitors</label>
+        </div>
+      </div>
+      <input type="submit" value="Download" />
+    </form>
+    <p class="note warning">
+      Please enter your name as it appears on the timetable website. CASE
+      SENSITIVE!
+    </p>
+    <p class="note">
+      The ID can be found after the last slash in the URL of your timetable. It
+      can also be found underneath the barcode on your student ID card.
+    </p>
+    <% if (messages.error) { %>
+    <p class="note error"> <%= messages.error %> </p>
+    <% } %>
 
     <footer>
-      <a href="https://github.com/lhvy">GitHub Profile</a> | <a href="https://github.com/lhvy/timetable">Source Code </a>
+      <a href="https://github.com/lhvy">GitHub Profile</a> |
+      <a href="https://github.com/lhvy/timetable">Source Code </a>
     </footer>
   </body>
 </html>
