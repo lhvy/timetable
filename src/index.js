@@ -71,6 +71,31 @@ app.post("/", (req, res) => {
   const first = req.body.first;
   const last = req.body.last;
 
+  // Ensure first and last exist and are only letters or hyphen
+  if (
+    !first ||
+    !last ||
+    !/^[a-zA-Z-]+$/.test(first) ||
+    !/^[a-zA-Z-]+$/.test(last)
+  ) {
+    log.error({ id, first, last }, "Invalid first or last name");
+    req.flash("error", "Invalid first or last name");
+    res.status(400).redirect("/");
+    return;
+  }
+
+  // Ensure id exists and is alphanumeric
+  if (!id || !/^[a-zA-Z0-9]+$/.test(id)) {
+    log.error({ id, first, last }, "Invalid student id");
+    req.flash("error", "Invalid student id");
+    res.status(400).redirect("/");
+    return;
+  }
+
+  // Convert first and last to lowercase
+  first = first.toLowerCase();
+  last = last.toLowerCase();
+
   const filename = `${id}+${first}+${last}.timetable`;
   const filepath = `${timetables_path}/${filename}`;
 

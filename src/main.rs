@@ -53,7 +53,9 @@ fn main() -> anyhow::Result<()> {
         std::fs::write(
             format!(
                 "timetables/{}+{}+{}.timetable",
-                student.id, student.first, student.last
+                student.id,
+                student.first.to_lowercase(),
+                student.last.to_lowercase()
             ),
             xml,
         )?;
